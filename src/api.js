@@ -10,6 +10,12 @@ const api = axios.create({
 
 export const moviesApi = {
     nowPlaying: () => api.get('movie/now_playing'),
+    movieDetail: id => 
+        api.get(`movie/${id}`, {
+            params: {
+                append_to_response: "videos"
+            }
+        }),
 };
 
 export const genresApi = {

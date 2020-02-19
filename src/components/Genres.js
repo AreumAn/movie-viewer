@@ -41,7 +41,7 @@ const Genre = styled(NavLink)`
     }
 `;
 
-const Genres = () => {
+const Genres = ({ onSelect, genreId }) => {
     const [ genres, setGenres ] = useState(null);
     const [ loading, setLoading ] = useState(false);
 
@@ -52,7 +52,6 @@ const Genres = () => {
                 const {
                     data: { genres: genresResult }
                 } = await genresApi.genreList();
-                // Show only 7 genres
                 setGenres(genresResult.slice(0, 7));
             } catch (e) {
                 console.log(e);

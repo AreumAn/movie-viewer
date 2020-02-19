@@ -17,14 +17,12 @@ const MovieListBox = styled.div `
 `;
 
 const MovieList = ({ genreId }) => {
-    // All movies from API
     const [movies, setMovies] = useState(null);
-    // To show movies by selected genre
     const [selectedMovies, setSelectedMovies] = useState(null);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchData = async() => {
             setLoading(true);
             try {
                 const {
@@ -41,7 +39,7 @@ const MovieList = ({ genreId }) => {
     }, []);
 
     useEffect(() => {
-        if(genreId && genreId !== 'all') {
+        if(movies && genreId && genreId !== 'all') {
             setSelectedMovies(
                 movies.filter(movie => 
                     movie.genre_ids.indexOf(genreId) !== -1
